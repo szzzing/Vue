@@ -2,26 +2,12 @@
     <head>
         <title>Vue.js</title>
         <link rel="stylesheet" href="../style.css?after">
-        <style>
-            #title {
-                font-size: 36px;
-                font-weight: 700;
-            }
-            #sub-title {
-                font-size: 20px;
-                font-weight: 400;
-            }
-        </style>
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         
-        <div id="title">
-            {{msg}}
-        </div>
-        <div id="content">
-            {{msg}}
-        </div>
+
+        <!-- 전역 컴포넌트와 지역 컴포넌트 -->
         <div id="global-component" class="item">
             <button>전역 컴포넌트 등록</button>
             <global-component></global-component>
@@ -64,6 +50,7 @@
             });            
         </script>
         
+
         <!-- 유효범위에 따른 전역 컴포넌트와 지역 컴포넌트의 차이 -->
         <div class="title">뷰 인스턴스의 유효범위</div>
         <div id="component-area1" class="item">
@@ -87,6 +74,34 @@
             new Vue({
                 el: '#component-area2'
             })
+        </script>
+
+
+        <!-- 실습 -->
+        <div id="app">
+            <header>
+                <h3>{{message}}</h3>
+            </header>
+            <todo-footer></todo-footer>
+            <todo-list></todo-list>
+        </div>
+
+        <script>
+            Vue.component('todo-footer', {
+                template: '<div>todo-footer</div>'
+            });
+
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'To Do List'
+                },
+                components: {
+                    'todo-list' : {
+                        template: '<div>todo-list</div>'
+                    }
+                }
+            });
         </script>
     </body>
 </html>
