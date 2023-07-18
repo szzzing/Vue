@@ -5,3 +5,10 @@
 * {
     font-family: 'Toss Product Sans', TossFace;
 }
+.title {
+    font-size: 24px;
+    font-weight: 700;
+}
+.item {
+    margin: 16px 0;
+}

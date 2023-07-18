@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Vue.js</title>
+        <link rel="stylesheet" href="../style.css?after">
         <style>
             #title {
                 font-size: 36px;
@@ -14,38 +15,78 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <link rel="stylesheet" href="style.css?after">
+        
         <div id="title">
-            {{msg}}
-        </div>
-        <div id="sub-title">
             {{msg}}
         </div>
         <div id="content">
             {{msg}}
         </div>
+        <div id="global-component" class="item">
+            <button>전역 컴포넌트 등록</button>
+            <global-component></global-component>
+        </div>
+        <div id="local-component" class="item">
+            <button>지역 컴포넌트 등록</button>
+            <local-component></local-component>
+        </div>
+
+        <script>
+            Vue.component('global-component', {
+                template: '<div>전역 컴포넌트가 등록되었습니다.</div>'
+            });
+            
+            new Vue({
+                el: '#global-component'
+            })
+            
+            new Vue({
+                el: '#local-component',
+                components: {
+                    'local-component': {
+                        template: '<div>지역 컴포넌트가 등록되었습니다.</div>'
+                    }
+                }
+            })
+
+            new Vue({
+                el: '#title',
+                data: {
+                    msg: '💻 Vue.js Study'
+                }
+            });
+
+            new Vue({
+                el: '#content',
+                data: {
+                    msg: '컴포넌트'
+                }
+            });            
+        </script>
+        
+        <!-- 유효범위에 따른 전역 컴포넌트와 지역 컴포넌트의 차이 -->
+        <div class="title">뷰 인스턴스의 유효범위</div>
+        <div id="component-area1" class="item">
+            <global-component></global-component>
+            <local-component></local-component>
+        </div>
+        <div id="component-area2" class="item">
+            <global-component></global-component>
+            <local-component></local-component>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#component-area1',
+                components: {
+                    'local-component' : {
+                        template: '<div>지역 컴포넌트가 등록되었습니다.</div>'
+                    }
+                }
+            });
+            new Vue({
+                el: '#component-area2'
+            })
+        </script>
     </body>
-
-    <script>
-        new Vue({
-            el: '#title',
-            data: {
-                msg: '💻 Vue.js Study'
-            }
-        });
-
-        new Vue({
-            el: '#sub-title',
-            data: {
-                msg: 'Vue.js 공부를 위한 프로젝트'
-            }
-        });
-
-        new Vue({
-            el: '#content',
-            data: {
-                msg: '뷰 인스턴스와 속성, 생명주기'
-            }
-        })
-    </script>
 </html>
