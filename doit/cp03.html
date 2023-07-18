@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Vue.js</title>
+        <style>
+            #title {
+                font-size: 36px;
+                font-weight: 700;
+            }
+            #sub-title {
+                font-size: 20px;
+                font-weight: 400;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="style.css?after">
+        <div id="title">
+            {{msg}}
+        </div>
+        <div id="sub-title">
+            {{msg}}
+        </div>
+        <div id="content">
+            {{msg}}
+        </div>
+    </body>
+
+    <script>
+        new Vue({
+            el: '#title',
+            data: {
+                msg: '💻 Vue.js Study'
+            }
+        });
+
+        new Vue({
+            el: '#sub-title',
+            data: {
+                msg: 'Vue.js 공부를 위한 프로젝트'
+            }
+        });
+
+        new Vue({
+            el: '#content',
+            data: {
+                msg: '뷰 인스턴스와 속성, 생명주기'
+            }
+        })
+    </script>
+</html>

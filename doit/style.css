@@ -1,0 +1,15 @@
+@import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
+@import url('https://static.toss.im/tps/main.css');
+@import url('https://static.toss.im/tps/others.css');
+
+* {
+    font-family: 'Toss Product Sans', TossFace;
+}
+#title {
+    font-size: 36px;
+    font-weight: 700;
+}
+#sub-title {
+    font-size: 20px;
+    font-weight: 400;
+}
