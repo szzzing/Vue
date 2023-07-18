@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Vue.js</title>
+        <style>
+            #title {
+                font-size: 36px;
+                font-weight: 700;
+            }
+            #sub-title {
+                font-size: 20px;
+                font-weight: 400;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="../style.css?after">
+        <div id="title">
+            {{msg}}
+        </div>
+        <div id="sub-title">
+            {{msg}}
+        </div>
+        <div id="content">
+            {{msg}}
+        </div>
+        <div id="life-cycle">
+            {{msg}}
+        </div>
+    </body>
+
+    <script>
+        new Vue({
+            el: '#title',
+            data: {
+                msg: '💻 Vue.js Study'
+            }
+        });
+
+        new Vue({
+            el: '#sub-title',
+            data: {
+                msg: 'Vue.js 공부를 위한 프로젝트'
+            }
+        });
+
+        new Vue({
+            el: '#content',
+            data: {
+                msg: '뷰 인스턴스와 속성'
+            }
+        });
+
+        new Vue({
+            el: '#life-cycle',
+            data: {
+                msg: '뷰 인스턴스의 라이프사이클에 대해 알아보자'
+            },
+            beforeCreate: function() {
+                console.log('beforeCreate');
+            },
+            created: function() {
+                console.log('created');
+            },
+            beforeMount: function() {
+                console.log('beforeMount');
+            },
+            mounted: function() {
+                console.log('mounted');
+            },
+            beforeUpdate: function() {
+                console.log('beforeUpdate');
+            },
+            updated: function() {
+                console.log('updated');
+            },
+            beforeDestroy: function() {
+                console.log('beforeDestroy');
+            },
+            distroyed: function() {
+                console.log('distroyed');
+            }
+        });
+    </script>
+</html>
