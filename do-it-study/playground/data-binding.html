@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <div id="app">
+        
+        <!-- computed -->
+        <p>{{ num }}</p>
+        <p v-bind:id="uuid" v-bind:class="name">{{ doubleNum }}</p>
+        
+        <!-- 디렉티브 : v-if -->
+        <div v-if="loading">
+            Loading...
+        </div>
+        <div v-else>
+            Test user has been logged in...
+        </div>
+
+        <!-- 디렉티브 : v-show -->
+        <div v-show="loading">
+            Loading...
+        </div>
+        
+        <!-- 실습 -->
+        <input type="text">
+        <p></p>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                uuid: 'abc',
+                name: 'text-blue',
+                loading: true
+            },
+            computed: {
+                doubleNum: function() {
+                    return this.num * 2
+                }
+            }
+        })
+    </script>
+</body>
+</html>

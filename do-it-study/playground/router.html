@@ -11,40 +11,49 @@
     <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
     
     <div id="app">
-        <div>
-            <!-- 라우터링크는 최종적으로 a태그로 변경되어 나타남 -->
-            <router-link to="/login">Login</router-link>
-            <router-link to="/main">Main</router-link>
-        </div>
+        <!-- 라우터링크는 최종적으로 a태그로 변경되어 나타남 -->
+        <router-link to="/main">Main</router-link>
+        <router-link to="/login">Login</router-link>
         <router-view></router-view>
     </div>
 
     <script>
         var LoginComponent = {
-            template: '<div>login</div>'
+            template: '<div>login<router-link to="/id">id</router-link><router-link to="/pw">pw</router-link><router-view></router-view></div>'
         }
         var MainComponent = {
             template: '<div>main</div>'
         }
+        var IdComponent = {
+            template: '<div>아이디<input type=text/></div>'
+        }
+        var PwComponent = {
+            template: '<div>패스워드<input type=password/></div>'
+        }
 
         var router = new VueRouter({
-            // 페이지의 라우팅 정보
-            /*
-                페이지에 대한 정보를 배열 객체에 담음
-                페이지 개수만큼 객체 필요
-            */
             routes: [
+                {
+                    name: 'main',
+                    path: '/main',
+                    component: MainComponent
+                },
                 {
                     name: 'login',
                     // 페이지 url 이름
                     path: '/login',
                     // 해당 url에서 표시될 컴포넌트
-                    component: LoginComponent
-                },
-                {
-                    name: 'main',
-                    path: '/main',
-                    component: MainComponent
+                    component: LoginComponent,
+                    children: [
+                        {
+                            path: '/id',
+                            component: IdComponent
+                        },
+                        {
+                            path: '/pw',
+                            component: PwComponent
+                        }
+                    ]
                 }
             ]
         });
