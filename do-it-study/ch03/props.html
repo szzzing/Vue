@@ -50,7 +50,7 @@
 
         <div class="item">상위-하위 컴포넌트</div>
         <div id="app2">
-            <child-component1 v-bind:propsdata="message"></child-component1>
+            <child-component1 v-bind:propsdata="message" v-bind:propsdata2="message2"></child-component1>
         </div>
         <div id="app3">
             <child-component2 v-on:show-log="printText"></child-component2>
@@ -59,8 +59,8 @@
         <script>
             Vue.component(
                 'child-component1', {
-                    props: ['propsdata'],
-                    template: '<p>{{propsdata}}</p>',
+                    props: ['propsdata', 'propsdata2'],
+                    template: '<p>{{propsdata}}<br>{{propsdata2}}</p>',
                     methods: {
                         showLog : function() {
                             this.$emit('show-log');
@@ -83,7 +83,8 @@
             new Vue({
                 el: '#app2',
                 data: {
-                    message: 'Hello Vue! passed from Parent Component'
+                    message: '1번 메세지',
+                    message2: '2번 메세지'
                 }
             });
 
@@ -97,5 +98,32 @@
             });
         </script>
 
+        <div class="item">실습</div>
+        <div id="app4">
+            <app-header v-bind:propsdata="message"></app-header>
+            <app-content v-bind:propsdata="num"></app-content>
+        </div>
+
+        <script>
+            var appHeader = {
+                template: '<h1>{{propsdata}}</h1>',
+                props: ['propsdata']
+            };
+            var appContent = {
+                template: '<div>{{propsdata}}</div>',
+                props: ['propsdata']
+            };
+
+            Vue.component('app-header', appHeader);
+            Vue.component('app-content', appContent);
+
+            new Vue({
+                el: '#app4',
+                data: {
+                    message: 'hi',
+                    num: 10
+                }
+            })
+        </script>
     </body>
 </html>
