@@ -56,6 +56,6 @@ export default {
     }
     .list-enter, .list-leave-to {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateX(30px);
     }
 </style>

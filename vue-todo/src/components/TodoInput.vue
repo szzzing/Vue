@@ -6,6 +6,11 @@
     </span>
 
     <todo-modal v-if="showModal" v-on:modalControl="modalControl">
+        <template v-slot:header>경고</template>
+        <template v-slot:footer>
+            할 일을 입력하세요.
+            <i @click="modalControl" class="closeModalBtn fas fa-times" aria-hidden="true"></i>
+        </template>
     </todo-modal>
   </div>
 </template>

@@ -3,11 +3,12 @@
         <div class="modal-mask" @keyup.esc="$emit('modalControl')">
             <div class="modal-wrapper">
                 <div class="modal-container">
-                    <h3>경고</h3>
-                    <span>
-                        할 일을 입력하세요.
-                        <i @click="$emit('modalControl')" class="closeModalBtn fas fa-times" aria-hidden="true"></i>
-                    </span>
+                    <div class="modal-header">
+                        <slot name="header"></slot>
+                    </div>
+                    <div class="modal-footer">
+                        <slot name="footer"></slot>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,7 +74,9 @@ export default {
     * You can easily play with the modal transition by editing
     * these styles.
     */
-
+    .modal-enter-active, .modal-leave-active {
+        transition: all .3s ease;
+    }
     .modal-enter {
         opacity: 0;
     }
