@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css?after">
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     
     <div id="app">
         <app-header v-bind:propsdata="num"></app-header>
-        <app-content v-on:pass="deliverNum"></app-content>
+        <app-content v-bind:propsdata="num" v-on:pass="deliverNum"></app-content>
     </div>
 
     <script>
@@ -21,6 +20,7 @@
         }
         var appContent = {
             template: '<div>content <button v-on:click="passNum">pass</button></div>',
+            props: ['propsdata'],
             methods: {
                 passNum: function() {
                     this.$emit('pass', 10);
