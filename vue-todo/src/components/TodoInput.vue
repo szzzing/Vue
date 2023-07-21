@@ -4,14 +4,22 @@
     <span class="addContainer" v-on:click="addTodo">
         <i class="addBtn fas fa-plus" aria-hidden="true"></i>
     </span>
+
+    <todo-modal v-if="showModal" v-on:modalControl="modalControl">
+    </todo-modal>
   </div>
 </template>
 
 <script>
+import TodoModal from './common/TodoModal.vue'
 export default {
+    components: {
+        'todo-modal': TodoModal
+    },
     data: function() {
         return {
-            newTodoItem: ''
+            newTodoItem: '',
+            showModal: false
         }
     },
     methods: {
@@ -20,10 +28,15 @@ export default {
                 var value = this.newTodoItem && this.newTodoItem.trim();
                 this.$emit('addTodo', value);
                 this.clearInput();
+            } else {
+                this.modalControl();
             }
         },
         clearInput: function() {
             this.newTodoItem = '';
+        },
+        modalControl: function() {
+            this.showModal = !this.showModal;
         }
     }
 }
@@ -56,5 +69,6 @@ export default {
     .addBtn {
         color: white;
         vertical-align: middle;
+        cursor: pointer;
     }
 </style>

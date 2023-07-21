@@ -48,6 +48,7 @@ export default {
     .removeBtn {
         margin-left: auto;
         color: #de4343;
+        cursor: pointer;
     }
 
     .list-enter-active, .list-leave-active {
