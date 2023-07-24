@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" tag="div" class="movies">
-            <div class="movie" v-for="(movie) in movies" :key="movie" @click="this.selected=movie.id; this.isModal=true">
+            <div class="movie" v-for="(movie) in movies" :key="movie" @click="this.selected=movie.id; this.isContent=true">
                 <div class="thum">
                     <img :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path">
                 </div>
@@ -16,8 +16,8 @@
             </div>
         </transition-group>
 
-        <movie-modal v-if="isModal" v-bind:id="selected">
-        </movie-modal>
+        <movie-content v-if="isContent" v-bind:id="selected">
+        </movie-content>
     <div>
 
     </div>
@@ -25,14 +25,14 @@
 </template>
 
 <script>
-import MovieModal from './common/MovieModal.vue'
+import MovieContent from './MovieContent.vue'
 export default {
     components: {
-        'movie-modal': MovieModal
+        'movie-content': MovieContent
     },
     data() {
         return {
-            isModal: false,
+            isContent: false,
             selected: ''
         }
     },
@@ -44,10 +44,6 @@ export default {
         page() {
             return this.movieList.page
         }
-    },
-    watch: {
-        movieList() {
-        }
     }
 }
 </script>
@@ -55,13 +51,14 @@ export default {
 <style scoped>
     .movies {
         display: flex;
-        gap: 20px 20px;
+        gap: 60px 20px;
         flex-wrap: wrap;
     }
     .movie {
         flex: 0 200px;
         border-radius: 16px;
         overflow: hidden;
+        cursor: pointer;
     }
     .movie .info {
         text-align: center;
@@ -72,5 +69,8 @@ export default {
     .movie .info .title {
         font-size: 18px;
         text-align: center;
+    }
+    .movie .info .date {
+        color: #aaa;
     }
 </style>
