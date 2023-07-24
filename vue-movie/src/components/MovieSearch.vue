@@ -17,21 +17,28 @@ export default {
     data: function() {
         return {
             query: '',
+            list : {}
         }
     },
     computed: {
-        url: function() {
-            return 'https://api.themoviedb.org/3/search/movie?query='+this.query+'&api_key=7bf40bf859def4eaf9886f19bb497169&language=ko-KR'
+        url() {
+            return 'https://api.themoviedb.org/3/search/movie?query='+this.query.trim()+'&api_key=7bf40bf859def4eaf9886f19bb497169&language=ko-KR';
         }
     },
     watch: {
-        url: function() {
+        // axios보다 emit이 먼저 실행되는 문제
+        // this를 변수에 저장해 해결
+        query: function() {
+            var vm = this;
+            console.log(this.query);
+            console.log(this.url);
             axios
             .get(this.url)
             .then(function(response) {
+                console.log(1);
                 list = response.data;
-            })
-            this.$emit('returnList', list);
+                vm.$emit('returnList', list);
+            });
         }
     }
 }

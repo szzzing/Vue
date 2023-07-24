@@ -44,6 +44,10 @@ export default {
         page() {
             return this.movieList.page
         }
+    },
+    watch: {
+        movieList() {
+        }
     }
 }
 </script>
