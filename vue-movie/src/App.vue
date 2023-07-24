@@ -1,26 +1,47 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <div id="wrap">
+      <movie-header></movie-header>
+      <movie-search v-on:returnList="getList"></movie-search>
+      <movie-list v-bind:movieList="movieList"></movie-list>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MovieHeader from './components/common/MovieHeader.vue' 
+import MovieSearch from './components/MovieSearch.vue'
+import MovieList from './components/MovieList.vue'
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    'movie-header': MovieHeader,
+    'movie-search': MovieSearch,
+    'movie-list': MovieList
+  },
+  data() {
+    return {
+      movieList: {}
+    }
+  },
+  methods: {
+    getList(list) {
+      this.movieList = list;
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
+@import url('https://static.toss.im/tps/main.css');
+@import url('https://static.toss.im/tps/others.css');
+
+* {
+    font-family: 'Toss Product Sans', TossFace;
+}
+
+#wrap {
+  max-width: 860px;
+  margin: 0 auto;
 }
 </style>
