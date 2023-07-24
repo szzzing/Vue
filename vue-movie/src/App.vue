@@ -49,7 +49,7 @@ export default {
   min-height: 100vh;
 }
 #wrap {
-  max-width: 860px;
+  max-width: 1020px;
   min-height: 100vh;
   margin: 0 auto;
 }

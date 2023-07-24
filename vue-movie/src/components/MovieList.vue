@@ -16,7 +16,7 @@
             </div>
         </transition-group>
 
-        <movie-content v-if="isContent" v-bind:id="selected">
+        <movie-content @closeContent="isContent=false;" v-if="isContent" v-bind:id="selected">
         </movie-content>
     <div>
 
@@ -55,20 +55,25 @@ export default {
         flex-wrap: wrap;
     }
     .movie {
-        flex: 0 200px;
+        flex: 0 240px;
         border-radius: 16px;
         overflow: hidden;
         cursor: pointer;
+        box-shadow: 2px 4px 40px #F7F9F1;
     }
     .movie .info {
         text-align: center;
+        padding: 4px 20px 20px;
     }
     .movie .thum img {
-        width: 200px;
+        width: 240px;
     }
     .movie .info .title {
         font-size: 18px;
+        font-weight: 600;
         text-align: center;
+        word-break: keep-all !important;
+        margin-bottom: 2px;
     }
     .movie .info .date {
         color: #aaa;

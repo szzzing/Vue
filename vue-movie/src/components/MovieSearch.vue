@@ -56,7 +56,7 @@ export default {
         height: 60px;
         line-height: 60px;
         border-radius: 16px;
-        margin: 20px auto;
+        margin: 20px auto 40px;
     }
     :focus {
         outline: none;
