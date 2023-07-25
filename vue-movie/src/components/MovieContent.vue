@@ -86,7 +86,6 @@ export default {
     }
     .overview {
         color: #777;
-        margin-bottom: 40px;
     }
 
 

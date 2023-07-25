@@ -53,4 +53,15 @@ export default {
   min-height: 100vh;
   margin: 0 auto;
 }
+::-webkit-scrollbar {
+  width: 0px;
+	height: 0;
+}
+::-webkit-scrollbar-track {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--G50);
+  border-radius: 5px;
+}
 </style>
