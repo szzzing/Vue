@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const store = new Vuex.Store({
     state: {
-        headerText: '👍MOVIE👎',
+        headerText: 'Reminiscene',
         id: '',  // 선택한 영화 아이디
         query: '',
         details: {},

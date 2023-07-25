@@ -7,8 +7,12 @@
                 <span class="movie-inner">
                     <div class="thum">
                         <img
-                            v-if="movie.poster_path!=null"
-                            :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path">
+                        v-if="movie.poster_path!=null"
+                        :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path">
+                        <div class="vote-average">
+                            ⭐️
+                            {{ movie.vote_average.toFixed(1) }}
+                        </div>
                     </div>
                     <div class="info">
                         <div class="title">
@@ -69,11 +73,15 @@ export default {
         display: block;
         border-radius: 16px;
         overflow: hidden;
-        box-shadow: 2px 4px 40px #F7F9F1;
+        background: #222;
+        /* box-shadow: 2px 4px 40px #F7F9F1; */
     }
     .movie .info {
         text-align: center;
-        padding: 8px 20px 20px;
+        padding: 8px 20px 12px;
+    }
+    .thum {
+        position: relative;
     }
     .movie .thum img {
         width: 240px;
@@ -83,10 +91,25 @@ export default {
         font-weight: 600;
         text-align: center;
         word-break: keep-all !important;
-        margin-bottom: 2px;
+        margin-bottom: 8px;
+        color: #fff;
     }
     .movie .info .date {
         color: #aaa;
         font-size: 14px;
+        margin-bottom: 4px;
+    }
+    .movie .vote-average {
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        height: 32px;
+        line-height: 32px;
+        padding: 0px 12px 0px 10px;
+        border-radius: 16px;
+        background: #222;
     }
 </style>

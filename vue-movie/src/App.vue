@@ -1,12 +1,10 @@
 <template>
-  <div id="app">
     <div id="wrap">
       <movie-header></movie-header>
       <movie-search></movie-search>
       <movie-list></movie-list>
       <movie-footer></movie-footer>
     </div>
-  </div>
 </template>
 
 <script>
@@ -17,10 +15,10 @@ import MovieList from './components/MovieList.vue'
 
 export default {
   components: {
-    'movie-header': MovieHeader,
-    'movie-footer': MovieFooter,
-    'movie-search': MovieSearch,
-    'movie-list': MovieList
+    MovieHeader,
+    MovieFooter,
+    MovieSearch,
+    MovieList,
   },
   data() {
     return {
@@ -46,14 +44,12 @@ export default {
   font-family: 'Toss Product Sans', TossFace;
   list-style: none;
 }
-#app {
-  min-height: 100vh;
-  /* background: url('./assets/background.png') */
+html {
+  background: #181818;
 }
 #wrap {
-  max-width: 1020px;
-  min-height: 100vh;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: 60px auto;
 }
 ::-webkit-scrollbar {
   width: 0px;

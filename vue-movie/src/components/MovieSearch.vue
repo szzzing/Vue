@@ -1,13 +1,10 @@
 <template>
     <div>
         <div class="input-box">
-            <input type="text" placeholder="검색어를 입력하세요." v-model="query">
+            <input type="text" placeholder="엘리멘탈" v-model="query">
         </div>
         <div class="result" v-if="this.$store.state.query!=''">
-            <b>
-                {{ this.$store.state.query }}
-            </b>
-            에 대한 검색결과
+            <b>{{ this.$store.state.query }}</b>에 대한 영화를 보여줄게.
         </div>
     </div>
 </template>
@@ -52,7 +49,7 @@ export default {
         text-align: center;
     }
     input::placeholder {
-        color: #aaa;
+        color: #ddd;
     }
     .input-box {
         background: #f9f9f9;
@@ -66,7 +63,8 @@ export default {
         outline: none;
     }
     .result {
-        font-size: 20px;
-        margin: 20px 0 60px;
+        font-size: 24px;
+        margin: 40px 0 60px;
+        color: #fff;
     }
 </style>
