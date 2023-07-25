@@ -1,24 +1,31 @@
 <template>
     <div>
-        {{ this.$store.state.query }}
-        <transition-group name="list" tag="div" class="movies">
-            <div class="movie" v-for="(movie) in this.$store.state.searchList" :key="movie">
-            <!-- <div class="movie" v-for="(movie) in this.$store.state.searchList" :key="movie" @click="this.selected=movie.id; this.isContent=true"> -->
-                <div class="thum">
-                    <img :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path">
-                </div>
-                <div class="info">
-                    <div class="title">
-                        {{ movie.title }}
+        <transition-group name="list" tag="ul" class="movies">
+            <li class="movie"
+                v-for="(movie) in this.$store.state.searchList.results" :key="movie"
+                @click="this.clickContent(movie.id)">
+                <span class="movie-inner">
+                    <div class="thum">
+                        <img
+                            v-if="movie.poster_path!=null"
+                            :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path">
                     </div>
-                    <div class="date">
-                        {{ movie.release_date }}
+                    <div class="info">
+                        <div class="title">
+                            {{ movie.title }}
+                        </div>
+                        <div class="date">
+                            {{ movie.release_date.split('-')[0] }}
+                        </div>
                     </div>
-                </div>
-            </div>
+                </span>
+            </li>
         </transition-group>
 
-        <movie-content @closeContent="isContent=false;" v-if="isContent" v-bind:id="selected">
+        <!-- 영화 자세히 보기 모달 -->
+        <movie-content
+            @closeContent="isContent=false;"
+            v-if="this.$store.state.isContent">
         </movie-content>
     <div>
 
@@ -37,6 +44,12 @@ export default {
             isContent: false,
             selected: ''
         }
+    },
+    methods: {
+        clickContent(id) {
+            this.$store.commit('setId', id);
+            this.$store.dispatch('getDetails');
+        }
     }
 }
 </script>
@@ -48,21 +61,25 @@ export default {
         flex-wrap: wrap;
     }
     .movie {
-        flex: 0 240px;
+        width: calc((100% - 60px)/4);
+        cursor: pointer;
+        overflow: visible;
+    }
+    .movie-inner {
+        display: block;
         border-radius: 16px;
         overflow: hidden;
-        cursor: pointer;
         box-shadow: 2px 4px 40px #F7F9F1;
     }
     .movie .info {
         text-align: center;
-        padding: 4px 20px 20px;
+        padding: 8px 20px 20px;
     }
     .movie .thum img {
         width: 240px;
     }
     .movie .info .title {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         text-align: center;
         word-break: keep-all !important;
@@ -70,5 +87,6 @@ export default {
     }
     .movie .info .date {
         color: #aaa;
+        font-size: 14px;
     }
 </style>

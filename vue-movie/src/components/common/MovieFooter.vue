@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-    rest API from 👩szzzing
+    made by 🐰szzzing
   </div>
 </template>
 

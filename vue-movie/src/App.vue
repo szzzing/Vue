@@ -44,9 +44,11 @@ export default {
   padding: 0;
   margin: 0;
   font-family: 'Toss Product Sans', TossFace;
+  list-style: none;
 }
 #app {
   min-height: 100vh;
+  /* background: url('./assets/background.png') */
 }
 #wrap {
   max-width: 1020px;

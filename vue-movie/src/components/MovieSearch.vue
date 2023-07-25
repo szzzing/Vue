@@ -4,7 +4,10 @@
             <input type="text" placeholder="검색어를 입력하세요." v-model="query">
         </div>
         <div class="result" v-if="this.$store.state.query!=''">
-            {{ this.$store.state.query }}에 대한 검색결과
+            <b>
+                {{ this.$store.state.query }}
+            </b>
+            에 대한 검색결과
         </div>
     </div>
 </template>

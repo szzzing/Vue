@@ -3,11 +3,12 @@ import axios from 'axios'
 
 export const store = new Vuex.Store({
     state: {
-        headerText: 'Movie👍👎',
+        headerText: '👍MOVIE👎',
         id: '',  // 선택한 영화 아이디
         query: '',
         details: {},
-        searchList: {}
+        searchList: {},
+        isContent: false
     },
     mutations: {
         setId(state, payload) {
@@ -21,6 +22,9 @@ export const store = new Vuex.Store({
         },
         setQuery(state, payload) {
             state.query = payload;
+        },
+        setIsContent(state) {
+            state.isContent = !state.isContent;
         }
     },
     actions: {
@@ -29,21 +33,17 @@ export const store = new Vuex.Store({
             axios
             .get('https://api.themoviedb.org/3/search/movie?query='+context.state.query+'&api_key=7bf40bf859def4eaf9886f19bb497169&language=ko-KR')
             .then(function(response) {
-                console.log(response.data);
                 context.commit('setSearchList', response.data);
             });
         },
         // 영화 상세정보 불러오기
         getDetails(context) {
-            var list = {};
             axios
             .get('https://api.themoviedb.org/3/movie/'+context.state.id+'?api_key=7bf40bf859def4eaf9886f19bb497169&language=ko-KR')
             .then(function(response) {
-                list = response.data;
-                console.log(list);
-                }
-            );
-            context.commit('setSearchList', list);
+                context.commit('setDetails', response.data);
+                context.commit('setIsContent');
+            });
         }
     }
 });

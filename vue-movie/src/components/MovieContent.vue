@@ -1,27 +1,31 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask" @click="$emit('closeContent')">
+        <div class="modal-mask" @click="this.$store.commit('setIsContent')">
             <div class="modal-wrapper">
                 <div class="modal-container" @click.stop="">
-                    <img class="backdrop" v-bind:src="'https://image.tmdb.org/t/p/original/'+details.backdrop_path">
+                    <img class="backdrop"
+                        v-if="this.$store.state.details.backdrop_path!=null"
+                        v-bind:src="'https://image.tmdb.org/t/p/original/'+this.$store.state.details.backdrop_path">
                     <div class="info">
                         <div class="title">
-                            {{ details.title }}
-                            <div class="original-title" v-if="details.title != details.original_title">
-                                {{ details.original_title }}
+                            {{ this.$store.state.details.title }}
+                            <div class="original-title" v-if="this.$store.state.details.title !=this.$store.state.details.original_title">
+                                {{ this.$store.state.details.original_title }}
                             </div>
                             <div class="genre-release">
-                                {{ genre.join('/') }} ・ {{ details.release_date }}
+                                {{ this.genre }}
+                                ・
+                                {{ this.$store.state.details.release_date.split('-').join('.') }}
                             </div>
                             <div class="runtime">
-                                {{ details.runtime }}분
+                                {{ this.$store.state.details.runtime }}분
                             </div>
                         </div>
                         <div class="tagline">
-                            {{ details.tagline }}
+                            {{ this.$store.state.details.tagline }}
                         </div>
                         <div class="overview">
-                            {{ details.overview }}
+                            {{ this.$store.state.details.overview }}
                         </div>
                     </div>
                 </div>
@@ -31,27 +35,15 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
-    props: ['id'],
-    data() {
-        return {
-            details: {},
-            genre: []
-        }
-    },
-    created() {
-        console.log(this.id);
-        var vm = this;
-        axios
-        .get('https://api.themoviedb.org/3/movie/'+vm.id+'?api_key=7bf40bf859def4eaf9886f19bb497169&language=ko-KR')
-        .then(function(response) {
-            vm.details = response.data;
-            for(var g of response.data.genres) {
-                vm.genre.push(g.name);
+    computed: {
+        genre() {
+            var genres = [];
+            for(var g of this.$store.state.details.genres) {
+                genres.push(g.name);
             }
-        });
+            return genres.join('/');
+        }
     }
 }
 </script>
