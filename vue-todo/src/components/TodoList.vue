@@ -1,7 +1,7 @@
 <template>
     <section>
         <transition-group name="list" tag="ul">
-            <li v-for="(todoItem, index) in propsdata" :key="todoItem">
+            <li v-for="(todoItem, index) in this.$store.state.todoItems" :key="todoItem">
                 <i @click="toggleComplete(todoItem, index)" v-bind:class="{checkBtnCompleted: todoItem.completed}" class="checkBtn fas fa-check" aria-hidden="true"></i>
                 <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
                 <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
@@ -14,13 +14,12 @@
 
 <script>
 export default {
-    props: ['propsdata'],
     methods: {
         removeTodo(todoItem, index) {
-            this.$emit('removeItem', todoItem, index);
+            this.$store.commit('removeOneItem', {todoItem, index});
         },
         toggleComplete(todoItem, index) {
-            this.$emit('toggleItem', todoItem, index);
+            this.$store.commit('toggleOneItem', {todoItem, index});
         }
     }
 }
@@ -62,11 +61,18 @@ export default {
         color: #b3adad;
     }
 
-    .list-enter-active, .list-leave-active {
-        transition: all 1s;
+    .list-move,
+    .list-enter-active,
+    .list-leave-active {
+        transition: all 1s cubic-bezier(0.55, 0, 0.1, 1);
     }
-    .list-enter, .list-leave-to {
+    .list-enter-form,
+    .list-leave-to {
         opacity: 0;
         transform: translateX(30px);
+    }
+    .list-enter-active {
+        position: absolute;
+        transition: all 1s;
     }
 </style>

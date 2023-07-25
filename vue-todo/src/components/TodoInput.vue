@@ -29,9 +29,8 @@ export default {
     },
     methods: {
         addTodo: function() {
-            var obj = {completed:false, item:this.newTodoItem};
             if(this.newTodoItem!=='') {
-                this.$emit('addItem', obj);
+                this.$store.commit('addOneItem', this.newTodoItem);
                 this.clearInput();
             } else {
                 this.modalControl();
