@@ -1,5 +1,5 @@
 <template>
-    <div class="title">Movie👍</div>
+    <div class="title">{{ this.$store.state.headerText }}</div>
 </template>
 
 <script>

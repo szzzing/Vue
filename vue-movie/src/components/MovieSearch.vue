@@ -3,34 +3,35 @@
         <div class="input-box">
             <input type="text" placeholder="검색어를 입력하세요." v-model="query">
         </div>
-        <div class="result" v-if="query!=''">
-            {{ query }}에 대한 검색결과
+        <div class="result" v-if="this.$store.state.query!=''">
+            {{ this.$store.state.query }}에 대한 검색결과
         </div>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
-var list = {};
+// import axios from 'axios';
+// var list = {};
 
 export default {
     data: function() {
         return {
-            query: '',
-            list : {}
+            query: ''
         }
     },
     watch: {
         // axios보다 emit이 먼저 실행되는 문제
         // this를 변수에 저장해 해결
         query: function() {
-            var vm = this;
-            axios
-            .get('https://api.themoviedb.org/3/search/movie?query='+vm.query.trim()+'&api_key=7bf40bf859def4eaf9886f19bb497169&language=ko-KR')
-            .then(function(response) {
-                list = response.data;
-                vm.$emit('returnList', list);
-            });
+            // var vm = this;
+            // axios
+            // .get('https://api.themoviedb.org/3/search/movie?query='+vm.query.trim()+'&api_key=7bf40bf859def4eaf9886f19bb497169&language=ko-KR')
+            // .then(function(response) {
+            //     list = response.data;
+            //     vm.$emit('returnList', list);
+            // });
+            this.$store.commit('setQuery', this.query);
+            this.$store.dispatch('searchList');
         }
     }
 }

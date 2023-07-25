@@ -1,7 +1,9 @@
 <template>
     <div>
+        {{ this.$store.state.query }}
         <transition-group name="list" tag="div" class="movies">
-            <div class="movie" v-for="(movie) in movies" :key="movie" @click="this.selected=movie.id; this.isContent=true">
+            <div class="movie" v-for="(movie) in this.$store.state.searchList" :key="movie">
+            <!-- <div class="movie" v-for="(movie) in this.$store.state.searchList" :key="movie" @click="this.selected=movie.id; this.isContent=true"> -->
                 <div class="thum">
                     <img :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path">
                 </div>
@@ -34,15 +36,6 @@ export default {
         return {
             isContent: false,
             selected: ''
-        }
-    },
-    props: ['movieList'],
-    computed: {
-        movies() {
-            return this.movieList.results
-        },
-        page() {
-            return this.movieList.page
         }
     }
 }

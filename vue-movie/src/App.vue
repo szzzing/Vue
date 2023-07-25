@@ -2,8 +2,8 @@
   <div id="app">
     <div id="wrap">
       <movie-header></movie-header>
-      <movie-search v-on:returnList="getList"></movie-search>
-      <movie-list v-bind:movieList="movieList"></movie-list>
+      <movie-search></movie-search>
+      <movie-list></movie-list>
       <movie-footer></movie-footer>
     </div>
   </div>
