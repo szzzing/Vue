@@ -6,14 +6,11 @@
         <div class="result" v-if="this.$store.state.query!=''">
             <b>{{ this.$store.state.query }}</b>에 대한 영화를 보여줄게.
         </div>
-        <movie-footer></movie-footer>
     </div>
 </template>
 
 <script>
-import MovieFooter from './common/MovieFooter.vue';
 export default {
-  components: { MovieFooter },
     data: function() {
         return {
             query: ''

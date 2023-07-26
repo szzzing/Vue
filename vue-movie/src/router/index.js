@@ -1,11 +1,11 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import MainComponent from '../components/MainComponent.vue'
+import MovieMain from '../components/MovieMain.vue'
 import MovieContent from '../components/MovieContent.vue'
 
 const routes = [
     {
         path: '/',
-        component: MainComponent
+        component: MovieMain
     },
     {
         path: '/content/:id',

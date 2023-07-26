@@ -11,9 +11,25 @@ export const mutations = {
         state.details = payload;
     },
     setSearchList(state, payload) {
-        state.searchList = payload;
+        if(state.page==1) {
+            state.searchList = payload;
+        } else {
+            for(var p of payload) {
+                state.searchList.push(p);
+            }
+        }
     },
     setQuery(state, payload) {
         state.query = payload;
+        state.page = 1;
+        state.maxPage = 0;
+    },
+    setPage(state, payload) {
+        if(payload<=state.maxPage) {
+            state.page = payload
+        }
+    },
+    setMaxPage(state, payload) {
+        state.maxPage = payload
     }
 }

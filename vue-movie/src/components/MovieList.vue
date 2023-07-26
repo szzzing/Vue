@@ -1,8 +1,8 @@
 <template>
-    <div id="movie-list" class="inner">
+    <div id="movie-list" class="inner" v-if="this.$store.state.searchList.length>0">
         <transition-group name="list" tag="ul" class="movies">
             <li class="movie"
-                v-for="(movie) in searchList.results" :key="movie"
+                v-for="(movie) in searchList" :key="movie"
                 @click="clickContent(movie.id)">
                 <router-link :to="`/content/${movie.id}`">
                     <span class="movie-inner">
@@ -27,7 +27,12 @@
                 </router-link>
             </li>
         </transition-group>
-  </div>
+        <div class="next"
+            v-if="this.$store.state.page<this.$store.state.maxPage"
+            @click="this.nextPage()">
+            다음 페이지
+        </div>
+    </div>
 </template>
 
 <script>
@@ -46,6 +51,10 @@ export default {
     methods: {
         clickContent(id) {
             this.$store.dispatch('getDetails', id);
+        },
+        nextPage() {
+            this.$store.commit('setPage', this.$store.state.page+1);
+            this.$store.dispatch('searchList');
         }
     }
 }
@@ -104,5 +113,11 @@ export default {
         padding: 0px 12px 0px 10px;
         border-radius: 16px;
         background: #222;
+    }
+    .next {
+        text-align: center;
+        color: #fff;
+        margin: 100px 0 0;
+        cursor: pointer;
     }
 </style>

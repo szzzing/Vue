@@ -57,12 +57,13 @@ export default {
         bottom: 0;
     }
     .main {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
     .info {
         backdrop-filter: blur(10px);
-        padding: 20px 0 60px;
+        padding: 40px 0 60px;
         box-shadow: 20px 20px 100px 20px rgba(0,0,0,0.3);
+        background: rgba(0,0,0,0.5);
     }
     
     .title {
