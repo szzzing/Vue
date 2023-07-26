@@ -2,7 +2,7 @@
     <div>
         <transition-group name="list" tag="ul" class="movies">
             <li class="movie"
-                v-for="(movie) in this.$store.state.searchList.results" :key="movie"
+                v-for="(movie) in searchList.results" :key="movie"
                 @click="this.clickContent(movie.id)">
                 <span class="movie-inner">
                     <div class="thum">
@@ -38,7 +38,9 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import MovieContent from './MovieContent.vue'
+
 export default {
     components: {
         'movie-content': MovieContent
@@ -48,6 +50,9 @@ export default {
             isContent: false,
             selected: ''
         }
+    },
+    computed: {
+        ...mapState(['searchList'])
     },
     methods: {
         clickContent(id) {

@@ -10,9 +10,6 @@
 </template>
 
 <script>
-// import axios from 'axios';
-// var list = {};
-
 export default {
     data: function() {
         return {
@@ -20,16 +17,7 @@ export default {
         }
     },
     watch: {
-        // axios보다 emit이 먼저 실행되는 문제
-        // this를 변수에 저장해 해결
         query: function() {
-            // var vm = this;
-            // axios
-            // .get('https://api.themoviedb.org/3/search/movie?query='+vm.query.trim()+'&api_key=7bf40bf859def4eaf9886f19bb497169&language=ko-KR')
-            // .then(function(response) {
-            //     list = response.data;
-            //     vm.$emit('returnList', list);
-            // });
             this.$store.commit('setQuery', this.query);
             this.$store.dispatch('searchList');
         }
