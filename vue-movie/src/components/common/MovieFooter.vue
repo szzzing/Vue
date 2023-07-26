@@ -12,7 +12,7 @@ export default {
 
 <style scoped>
     #footer {
-        margin: 60px 0 0;
+        margin: 60px 0;
         text-align: center;
         color: #aaa;
     }

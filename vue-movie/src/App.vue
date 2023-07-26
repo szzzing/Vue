@@ -1,19 +1,12 @@
 <template>
     <div id="wrap">
-      <movie-header></movie-header>
       <router-view></router-view>
-      <movie-footer></movie-footer>
     </div>
 </template>
 
 <script>
-import MovieFooter from './components/common/MovieFooter.vue';
-import MovieHeader from './components/common/MovieHeader.vue';
-
 export default {
   components: {
-    MovieHeader,
-    MovieFooter
   },
   data() {
     return {
@@ -39,15 +32,18 @@ export default {
   font-family: 'Toss Product Sans', TossFace;
   list-style: none;
 }
-html {
+html, body {
   background: #181818;
+  margin: 0;
+  padding: 0;
 }
-#wrap {
+.inner {
   max-width: 1000px;
-  margin: 60px auto;
+  margin: 0 auto;
 }
 a {
   text-decoration: none;
+  color: unset;
 }
 ::-webkit-scrollbar {
   width: 0px;

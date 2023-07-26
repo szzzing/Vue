@@ -1,9 +1,11 @@
 <template>
    <div id="header">
-        <div class="title">
-            🌙
-        </div>
-        <div class="sub-title">어떤 영화가 궁금해?</div>
+        <router-link to="/">
+            <div class="title">
+                🌙
+            </div>
+            <div class="sub-title">어떤 영화가 궁금해?</div>
+        </router-link>
     </div>
 </template>
 
@@ -15,7 +17,7 @@ export default {
 
 <style scoped>
     #header {
-        margin: 0 0 60px;
+        margin: 60px 0;
     }
     .title {
         margin: 0 0 12px;

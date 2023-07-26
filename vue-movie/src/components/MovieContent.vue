@@ -1,27 +1,36 @@
 <template>
     <div id="content">
-        <img class="backdrop"
-            v-if="this.$store.state.details.backdrop_path!=null"
-            v-bind:src="'https://image.tmdb.org/t/p/original/'+this.$store.state.details.backdrop_path">
-        <div class="info">
-            <div class="title">
-                {{ this.$store.state.details.title }}
-                <div class="original-title" v-if="this.$store.state.details.title !=this.$store.state.details.original_title">
-                    {{ this.$store.state.details.original_title }}
+        <div class="backdrop" :style="{'background-image': 'url('+this.$store.state.details.backdrop_path+')' }">
+            <div class="area">
+                <div class="main inner">
+                    <div class="title">
+                        {{ this.$store.state.details.title }}
+                    </div>
+                    <div class="original-title" v-if="this.$store.state.details.title !=this.$store.state.details.original_title">
+                        {{ this.$store.state.details.original_title }}
+                    </div>
+                    <div class="genre-release">
+                        {{ [this.$store.state.details.genres,this.$store.state.details.release_date].join(" ・ ") }}
+                    </div>
+                    <div class="runtime">
+                        {{ this.$store.state.details.runtime+'분' }}
+                    </div>
                 </div>
-                <div class="genre-release">
-                    {{ [this.$store.state.details.genres,this.$store.state.details.release_date].join(" ・ ") }}
-                </div>
-                <div class="runtime">
-                    {{ this.$store.state.details.runtime+'분' }}
+                <div class="info">
+                    <div class="inner">
+                        <div class="tagline">
+                            {{ this.$store.state.details.tagline }}
+                        </div>
+                        <div class="overview">
+                            {{ this.$store.state.details.overview }}
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="tagline">
-                {{ this.$store.state.details.tagline }}
-            </div>
-            <div class="overview">
-                {{ this.$store.state.details.overview }}
-            </div>
+        </div>
+
+        <div class="back">
+        <router-link to="/">뒤로가기</router-link>
         </div>
     </div>
 </template>
@@ -36,20 +45,37 @@ export default {
 
 <style scoped>
     .backdrop {
-        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    .area {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .main {
+        margin-bottom: 20px;
     }
     .info {
-        padding: 20px 40px 40px;
+        backdrop-filter: blur(10px);
+        padding: 20px 0 60px;
+        box-shadow: 20px 20px 100px 20px rgba(0,0,0,0.3);
     }
+    
     .title {
         font-size: 48px;
         font-weight: 700;
-        margin-bottom: 40px;
         color: #fff;
+        filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.2));
     }
     .original-title {
         font-size: 28px;
         font-weight: 400;
+        color: #fff;
+        filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.2));
     }
     .genre-release {
         margin-top: 8px;
@@ -58,17 +84,25 @@ export default {
         margin-top: 4px;
     }
     .genre-release, .runtime {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
-        color: #aaa;
+        color: #ddd;
     }
     .tagline {
         color: #fff;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 600;
         margin-bottom: 12px;
     }
     .overview {
-        color: #ddd;
+        color: #fff;
+        font-size: 18px;
+        line-height: 1.4;
+    }
+    .back {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        color: #fff;
     }
 </style>

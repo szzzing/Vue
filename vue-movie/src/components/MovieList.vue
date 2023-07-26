@@ -1,5 +1,5 @@
 <template>
-    <div id="movie-list">
+    <div id="movie-list" class="inner">
         <transition-group name="list" tag="ul" class="movies">
             <li class="movie"
                 v-for="(movie) in searchList.results" :key="movie"
