@@ -1,8 +1,12 @@
 export const mutations = {
-    setId(state, payload) {
-        state.id = payload;
-    },
+    // 영화 상세정보 수정
     setDetails(state, payload) {
+        payload.release_date = payload.release_date.split('-').join('.');
+        var genre = [];
+        for(var g of payload.genres) {
+            genre.push(g.name);
+        }
+        payload.genres = genre.join('/');
         state.details = payload;
     },
     setSearchList(state, payload) {
@@ -10,8 +14,5 @@ export const mutations = {
     },
     setQuery(state, payload) {
         state.query = payload;
-    },
-    setIsContent(state) {
-        state.isContent = !state.isContent;
     }
 }

@@ -1,5 +1,5 @@
 <template>
-   <div class="inner">
+   <div id="header">
         <div class="title">
             🌙
         </div>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-    .inner {
+    #header {
         margin: 0 0 60px;
     }
     .title {

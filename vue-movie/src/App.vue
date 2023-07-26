@@ -1,24 +1,19 @@
 <template>
     <div id="wrap">
       <movie-header></movie-header>
-      <movie-search></movie-search>
-      <movie-list></movie-list>
+      <router-view></router-view>
       <movie-footer></movie-footer>
     </div>
 </template>
 
 <script>
-import MovieHeader from './components/common/MovieHeader.vue'
-import MovieFooter from './components/common/MovieFooter.vue' 
-import MovieSearch from './components/MovieSearch.vue'
-import MovieList from './components/MovieList.vue'
+import MovieFooter from './components/common/MovieFooter.vue';
+import MovieHeader from './components/common/MovieHeader.vue';
 
 export default {
   components: {
     MovieHeader,
-    MovieFooter,
-    MovieSearch,
-    MovieList,
+    MovieFooter
   },
   data() {
     return {
@@ -50,6 +45,9 @@ html {
 #wrap {
   max-width: 1000px;
   margin: 60px auto;
+}
+a {
+  text-decoration: none;
 }
 ::-webkit-scrollbar {
   width: 0px;
