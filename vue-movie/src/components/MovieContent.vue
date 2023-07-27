@@ -16,7 +16,8 @@
                         {{ this.$store.state.details.runtime+'분' }}
                     </div>
                 </div>
-                <div class="info">
+                <div class="info"
+                    v-if="this.$store.state.details.overview!=''">
                     <div class="inner">
                         <div class="tagline">
                             {{ this.$store.state.details.tagline }}
@@ -62,7 +63,6 @@ export default {
     .info {
         backdrop-filter: blur(10px);
         padding: 40px 0 60px;
-        box-shadow: 20px 20px 100px 20px rgba(0,0,0,0.3);
         background: rgba(0,0,0,0.5);
     }
     
