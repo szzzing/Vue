@@ -1,10 +1,11 @@
 package com.folder.app.controller;
 
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class DataController {
-
     @GetMapping("/")
-    public String Home() {
-        return "Data 준비중..."
+    public String home() {
+        return "Data 준비 중 ...";
     }
 }
