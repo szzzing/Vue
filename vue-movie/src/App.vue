@@ -56,4 +56,9 @@ a {
   background: var(--G50);
   border-radius: 5px;
 }
+@media screen and (max-width:1040px) {
+  #wrap {
+    margin: 0 20px;
+  }
+}
 </style>

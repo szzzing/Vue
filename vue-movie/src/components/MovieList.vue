@@ -6,10 +6,10 @@
                 @click="clickContent(movie.id)">
                 <router-link :to="`/content/${movie.id}`">
                     <span class="movie-inner">
-                        <div class="thum">
-                            <img
+                        <div class="thum" :style="{'background-image': 'url(https://image.tmdb.org/t/p/original/'+movie.poster_path+')' }">
+                            <!-- <img
                             v-if="movie.poster_path!=null"
-                            :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path">
+                            :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path"> -->
                             <div class="vote-average">
                                 ⭐️
                                 {{ movie.vote_average.toFixed(1) }}
@@ -71,12 +71,16 @@ export default {
         cursor: pointer;
         overflow: visible;
     }
+    @media screen and (max-width:600px) {
+        .movie {
+            width: calc((100% - 20px)/2);
+        }
+    }
     .movie-inner {
         display: block;
         border-radius: 16px;
         overflow: hidden;
         background: #222;
-        /* box-shadow: 2px 4px 40px #F7F9F1; */
     }
     .movie .info {
         text-align: center;
@@ -84,6 +88,10 @@ export default {
     }
     .thum {
         position: relative;
+        width: 100%;
+        padding-top: 175%;
+        background-size: cover;
+        background-position: center;
     }
     .movie .thum img {
         width: 240px;
