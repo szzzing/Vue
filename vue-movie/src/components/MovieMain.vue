@@ -7,8 +7,8 @@
 
 <script>
 import MovieHeader from './common/MovieHeader.vue';
-import MovieSearch from './MovieSearch.vue'
-import MovieList from './MovieList.vue'
+import MovieSearch from './movie/MovieSearch.vue'
+import MovieList from './movie/MovieList.vue'
 import MovieFooter from './common/MovieFooter.vue';
 
 export default {
