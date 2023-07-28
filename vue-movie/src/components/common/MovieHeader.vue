@@ -1,6 +1,6 @@
 <template>
    <div id="header">
-        <router-link to="/">
+        <router-link to="/admin">
             <div class="title">
                 🌙
             </div>

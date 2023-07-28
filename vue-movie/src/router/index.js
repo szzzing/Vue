@@ -1,6 +1,8 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import MovieMain from '../components/MovieMain.vue'
 import MovieContent from '../components/MovieContent.vue'
+import AdminMain from '../components/admin/AdminMain.vue'
+import AdminUser from '../components/admin/AdminUser.vue'
 
 const routes = [
     {
@@ -10,6 +12,16 @@ const routes = [
     {
         path: '/content/:id',
         component: MovieContent
+    },
+    {
+        path: '/admin',
+        component: AdminMain,
+        children: [
+            {
+                path: 'user',
+                component: AdminUser
+            },
+        ]
     }
 ]
 

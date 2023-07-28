@@ -34,6 +34,7 @@ export default {
 }
 html, body {
   background: #181818;
+  color: #fff;
   margin: 0;
   padding: 0;
 }
@@ -57,7 +58,7 @@ a {
   border-radius: 5px;
 }
 @media screen and (max-width:1040px) {
-  #wrap {
+  #wrap>* {
     margin: 0 20px;
   }
 }

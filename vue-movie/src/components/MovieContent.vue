@@ -45,6 +45,9 @@ export default {
 </script>
 
 <style scoped>
+    #content {
+        margin: 0 !important;
+    }
     .backdrop {
         height: 100vh;
         background-size: cover;
@@ -105,5 +108,11 @@ export default {
         top: 20px;
         left: 20px;
         color: #fff;
+    }
+    @media screen and (max-width:1040px) {
+        .inner {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
     }
 </style>
