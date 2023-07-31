@@ -67,11 +67,21 @@ export default {
         flex-wrap: wrap;
     }
     .movie {
-        width: calc((100% - 60px)/4);
+        width: calc((100% - 80px)/5);
         cursor: pointer;
         overflow: visible;
     }
-    @media screen and (max-width:600px) {
+    @media screen and (max-width:1023px) {
+        .movie {
+            width: calc((100% - 60px)/4);
+        }
+    }
+    @media screen and (max-width:768px) {
+        .movie {
+            width: calc((100% - 40px)/3);
+        }
+    }
+    @media screen and (max-width:479px) {
         .movie {
             width: calc((100% - 20px)/2);
         }
@@ -89,7 +99,7 @@ export default {
     .thum {
         position: relative;
         width: 100%;
-        padding-top: 175%;
+        padding-top: 150%;
         background-size: cover;
         background-position: center;
     }
@@ -125,7 +135,7 @@ export default {
     .next {
         text-align: center;
         color: #fff;
-        margin: 100px 0 0;
+        margin: 60px 0 0;
         cursor: pointer;
     }
 </style>

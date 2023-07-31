@@ -29,10 +29,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="back">
-        <router-link to="/">뒤로가기</router-link>
-        </div>
     </div>
 </template>
 
@@ -49,6 +45,7 @@ export default {
         margin: 0 !important;
     }
     .backdrop {
+        padding: 60px;
         height: 100vh;
         background-size: cover;
         background-position: center;
@@ -72,13 +69,11 @@ export default {
     .title {
         font-size: 48px;
         font-weight: 700;
-        color: #fff;
         filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.2));
     }
     .original-title {
         font-size: 28px;
         font-weight: 400;
-        color: #fff;
         filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.2));
     }
     .genre-release {
@@ -89,8 +84,7 @@ export default {
     }
     .genre-release, .runtime {
         font-size: 18px;
-        font-weight: 400;
-        color: #ddd;
+        font-weight: 500;
     }
     .tagline {
         color: #fff;
@@ -102,17 +96,5 @@ export default {
         color: #fff;
         font-size: 18px;
         line-height: 1.4;
-    }
-    .back {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        color: #fff;
-    }
-    @media screen and (max-width:1040px) {
-        .inner {
-            margin-left: 20px;
-            margin-right: 20px;
-        }
     }
 </style>
